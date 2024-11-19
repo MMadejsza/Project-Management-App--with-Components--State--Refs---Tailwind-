@@ -2,12 +2,15 @@ import React, {useState} from 'react';
 
 function NewTask({onAdd}) {
 	// state instead of ref to no valuate react managing dom convention when clearing input
-	const [enteredTask, setEnteredTask] = useState();
+	const [enteredTask, setEnteredTask] = useState('');
 
 	function handleChange(e) {
 		setEnteredTask(e.target.value);
 	}
 	function handleClick() {
+		if (enteredTask.trim() === '') {
+			return;
+		}
 		onAdd(enteredTask);
 		setEnteredTask('');
 	}
