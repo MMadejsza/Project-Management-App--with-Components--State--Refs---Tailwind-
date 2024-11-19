@@ -25,8 +25,10 @@ function App() {
 				...projectData,
 				id: Math.random(),
 			};
+
 			return {
 				...prevState,
+				selectedProjectId: undefined,
 				projects: [...prevState.projects, newProject],
 			};
 		});
@@ -44,7 +46,10 @@ function App() {
 	return (
 		<>
 			<main className='h-screen my-8 flex gap-8'>
-				<SideBar onStartAddProject={handleStartAddProject} />
+				<SideBar
+					onStartAddProject={handleStartAddProject}
+					projects={projectState.projects}
+				/>
 				{content}
 			</main>
 		</>
